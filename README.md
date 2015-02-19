@@ -1,6 +1,8 @@
 # Reset NTFS permissions
 
-This present to the user a text box where he can enter a file/folder path.
+The user can enter a filepath to a folder he can't access.
+
+On the backend, we check that the user can change permissions for this folder (check by regex and filepath length). In this example, the user can only change files/folders in a P:\ drive.
 
 The system then use the "takeown" and "icacls" commands to reset permissions for this folder.
 
