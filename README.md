@@ -6,8 +6,6 @@ On the backend, we check that the user can change permissions for this folder (c
 
 The system then use the "takeown" and "icacls" commands to reset permissions for this folder.
 
-![](https://raw.githubusercontent.com/leeroybrun/node-reset-ntfs-permissions/master/screenshot.png)
-
 ### Edit
 
 If you want to use it for your own use, you need to customize it.
@@ -28,7 +26,9 @@ Runs like a typical express app:
 
     node app.js
 
+### Screenshot
 
+![](https://raw.githubusercontent.com/leeroybrun/node-reset-ntfs-permissions/master/screenshot.png)
 
 ## License
 MIT
