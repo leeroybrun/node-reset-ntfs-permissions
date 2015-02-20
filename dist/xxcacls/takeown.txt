@@ -1,0 +1,88 @@
+Takeown
+
+Allows an administrator to recover access to a file that previously was denied 
+by making the administrator the owner of the file.
+
+Syntax
+
+takeown [/s Computer [/u [Domain\User [/p [Password]]]] /f FileName [/a] [/r] [/d {Y | N}]
+
+Parameters
+
+/sComputer
+
+Specifies the name or IP address of a remote computer (do not use backslashes). 
+The default is the local computer. This parameter applies to all of files and 
+folders specified in the command.
+
+/uDomain\User
+
+Runs the script with the permissions of the specified user account. The default 
+is system permissions.
+
+/p [Password]
+
+Specifies the password of the user account that is specified in the /u 
+parameter.
+
+/fFileName
+
+Specifies the file name or directory name pattern. You can use the wildcard 
+character "*" in specifying the pattern. You can also use ShareName\FileName.
+
+/a
+
+Gives ownership to the administrators group instead of the current user.
+
+/r
+
+Performs recursive operation on all files in the specified directory and 
+subdirectories.
+
+/d {Y | N}
+
+Default prompt used when the current user does not have permissions to view 
+folders within a directory. Use Y to take ownership and N to suppress the 
+confirmation prompt.
+
+Remarks
+	
+
+To perform this procedure, you must be a member of the Administrators group on 
+the local computer, or you must have been delegated the appropriate authority. 
+If the computer is joined to a domain, members of the Domain Admins group might 
+be able to perform this procedure. As a security best practice, consider using 
+Run as to perform this procedure.
+
+This command is typically used in batch files.
+	
+Using the /s, /u, and /p command-line options The /u and /p command-line options 
+are available only when you use /s. You must use /p with /u to provide the 
+user's password.
+
+If /a is not specified then file ownership is given to the user who is currently 
+logged on to the computer.
+
+Mixed patterns using the question mark (?) and the wildcard character (*) is not 
+supported.
+	
+If you install a Windows Server 2003 operating system on a computer with another 
+Windows Server 2003 operating system already installed and then attempt to 
+delete it, you cannot delete the entire directory. One of the hidden 
+directories, named \Installer, contains some .msi and .ico files that are 
+locked, and you have to format the drive to delete them. This is because the 
+Windows Server 2003 operating systems apply security attributes to the file so 
+that the only the System account of the previous installation can access the 
+files. Even an administrator of this computer cannot reset these permissions. 
+You must run takeown to delete these files.
+
+After deleting the lock with takeown, you might have to use Windows Explorer or 
+cacls to give you full permissions to the files and directories before you can 
+delete them. For more information about cacls, see Related Topics. 
+
+
+Examples
+
+To take ownership of a file using the name pattern Lostfile, type:
+
+takeown /f lostfile

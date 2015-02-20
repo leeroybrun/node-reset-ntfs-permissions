@@ -4,7 +4,7 @@
 
  var fs = require('fs');
 
-var setPermissions = require('../lib/setPermissions');
+var permissions = require('../lib/permissions');
 
 var rootPath = require('path').dirname(require.main.filename);
 
@@ -44,7 +44,7 @@ exports.permission = function (req, res) {
 		});
 	}
 
-	setPermissions(filePath, function(err) {
+	permissions.setXCACLS(filePath, function(err) {
 		if(err) {
 			log('/log/errors.log', ((typeof err === 'object') ? err.message : err) +' : '+filePath);
 
